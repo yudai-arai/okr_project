@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compile("org.webjars:jquery:2.1.4")
+    compile("org.webjars:bootstrap:3.3.5")
+    runtimeOnly 'com.h2database:h2'
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity5')
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'junit:junit:4.12'
+    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
